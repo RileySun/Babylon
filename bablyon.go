@@ -18,7 +18,7 @@ type Babylon struct {
 func NewBabylon(number int) *Babylon {
 	babylon := &Babylon{
 		Number:number,
-		Seperator:" ", 
+		Separator:" ", 
 	}
 	
 	err := babylon.LoadDict("/usr/share/dict/words")
