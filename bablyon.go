@@ -9,6 +9,7 @@ import(
 
 type Babylon struct {
 	Number int //Default Number of words
+	Separator string //Seperator for words, default is a space
 	dict []string //Word Storage
 	path string
 }
@@ -17,6 +18,7 @@ type Babylon struct {
 func NewBabylon(number int) *Babylon {
 	babylon := &Babylon{
 		Number:number,
+		Seperator:" ", 
 	}
 	
 	err := babylon.LoadDict("/usr/share/dict/words")
@@ -47,7 +49,7 @@ func (b *Babylon) Babble() string {
 		output[i] = b.dict[rand.Intn(len(b.dict) - 1)]
 	}
 	
-	return strings.Join(output, " ")
+	return strings.Join(output, b.Separator)
 }
 
 /* Set Random Seed */
