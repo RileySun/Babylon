@@ -47,7 +47,7 @@ func (b *Babylon) Babble(number int) string {
 func (b *Babylon) BabbleSlice(number int) []string {
 	output := make([]string, number)
 	
-	for i := 0; i < b.Number ; i++ {
+	for i := 0; i < number ; i++ {
 		output[i] = b.dict[rand.Intn(len(b.dict) - 1)]
 	}
 	
