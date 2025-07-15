@@ -8,16 +8,14 @@ import(
 )
 
 type Babylon struct {
-	Number int //Default Number of words
 	Separator string //Seperator for words, default is a space
 	dict []string //Word Storage
 	path string
 }
 
 //Arg is default number of words, can be changed anytime
-func NewBabylon(number int) *Babylon {
+func NewBabylon() *Babylon {
 	babylon := &Babylon{
-		Number:number,
 		Separator:" ", 
 	}
 	
@@ -42,14 +40,18 @@ func (b *Babylon) LoadDict(path string) error {
 	return nil
 }
 
-func (b *Babylon) Babble() string {
-	output := make([]string, b.Number)
+func (b *Babylon) Babble(number int) string {
+	return strings.Join(b.BabbleSlice(number), b.Separator)
+}
+
+func (b *Babylon) BabbleSlice(number int) []string {
+	output := make([]string, number)
 	
 	for i := 0; i < b.Number ; i++ {
 		output[i] = b.dict[rand.Intn(len(b.dict) - 1)]
 	}
 	
-	return strings.Join(output, b.Separator)
+	return output
 }
 
 /* Set Random Seed */
